@@ -16,9 +16,12 @@ def getTextFromTweet():
         tweet_words = tweet['text'].split() # find the text element and split it into words
         for word in tweet_words:
             if word in scores: # see if a word exists in the scores dict
-                nextWord = tweet_words[(tweet_words.index(word) + 1)] # grab the word imediately after it
-                if not nextWord in scores: # only include adjacent words that are not in AFN-111
-                    print nextWord, scores[word] # print out the nextWord alomg with the score from the original word
+                try: # sometimes there won't be a next word...
+                    nextWord = tweet_words[(tweet_words.index(word) + 1)] # grab the next word
+                    if not nextWord in scores: # only include next words that are not in AFN-111
+                        print nextWord, scores[word] # print out the next word alomg with the score from the original word
+                except:
+                    pass
 
 def main():
     dictionary()
