@@ -16,8 +16,10 @@ def getTextFromTweet():
         tweet_words = tweet['text'].split() # find the text element and split it into words
         for word in tweet_words:
             if word in scores: # see if a word exists in the scores dict
-                print word, scores[word] # if it does, print it out alomg with it's score value
-
+		print tweet['text']
+                print 'keyword:', word
+		print 'score', scores[word] # if it does, print it out alomg with it's score value
+		print
 def main():
     dictionary()
     getTextFromTweet()
